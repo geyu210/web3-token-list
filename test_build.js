@@ -48,3 +48,4 @@ async function generate(chainId) {
     return combined
 }
 
+generate(42220)
