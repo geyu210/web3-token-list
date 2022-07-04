@@ -54,6 +54,14 @@ async function generate(chainId) {
     // remove duplicate tokens
     let seen = {}
 
+    for (tokenListUrl of tokenListUrls) {
+        const response = await axios.get(tokenListUrl)
+        console.log(`response = ${response}`)
+        console.log(response)
+        let rawTokens = response.data
+        console.log(`rawTokens= ${rawTokens}`)
+        console.log(rawTokens)
+    }
 
 
 
