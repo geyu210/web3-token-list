@@ -38,6 +38,7 @@ async function generate(chainId) {
     try {
         additions = require(`./additions/${chainId}`)
         console.log(`additions = ${additions}`)
+        console.log(additions)
     } catch (err) {
         // ignore missing additions
     }
