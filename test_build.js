@@ -42,6 +42,19 @@ async function generate(chainId) {
     } catch (err) {
         // ignore missing additions
     }
+    let removals = []
+    try {
+        removals = require(`./removals/${chainId}`)
+        console.log(`removals = ${removals}`)
+        console.log(removals)
+    } catch (err) {
+        // ignore missing removals
+    }
+
+    // remove duplicate tokens
+    let seen = {}
+
+
 
 
     const combined = []
