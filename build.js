@@ -23,6 +23,11 @@ const TOKEN_LIST = {
     44787: [
         'https://raw.githubusercontent.com/Ubeswap/default-token-list/master/ubeswap-experimental.token-list.json',
     ],
+    // Harmony one
+    1666600000: [
+        'https://raw.githubusercontent.com/DefiKingdoms/community-token-list/main/src/defikingdoms-default.tokenlist.json',
+        'https://raw.githubusercontent.com/sushiswap/default-token-list/master/tokens/harmony.json',
+    ],
     // polygon
     137: [
         'https://raw.githubusercontent.com/sushiswap/list/master/lists/token-lists/default-token-list/tokens/polygon.json',
