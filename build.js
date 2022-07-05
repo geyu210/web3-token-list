@@ -57,6 +57,8 @@ const TOKEN_LIST = {
 const RPC_URL = {
     // celo
     42220: 'https://rpc.ankr.com/celo',
+     // Harmony one
+     1666600000: 'https://api.harmony.one',
     // gnosis
     100: 'https://rpc.ankr.com/gnosis',
     // polygon
