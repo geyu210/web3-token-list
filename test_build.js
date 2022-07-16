@@ -56,12 +56,19 @@ async function generate(chainId) {
 
     for (tokenListUrl of tokenListUrls) {
         const response = await axios.get(tokenListUrl)
-        console.log(`response = ${response}`)
-        console.log(response)
+        // console.log(`response = ${response}`)
+        // console.log(response)
         let rawTokens = response.data
         console.log(`rawTokens= ${rawTokens}`)
         console.log(rawTokens)
+
+        if (Array.isArray(rawTokens)) {
+
+        }else{
+            rawTokens = rawTokens.tokens
+        }
     }
+
 
 
 
