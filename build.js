@@ -55,6 +55,10 @@ const TOKEN_LIST = {
 }
 
 const RPC_URL = {
+    //Eth main
+    1:'https://rpc.ankr.com/eth',
+    //Ropsten
+    3:'https://rpc.ankr.com/eth_ropsten',
     // celo
     42220: 'https://rpc.ankr.com/celo',
      // Harmony one
