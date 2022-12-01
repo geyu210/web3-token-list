@@ -15,6 +15,8 @@ const _100_tokens_json_1 = __importDefault(require("./build/100-tokens.json"));
 const _100_fresh_tokens_json_1 = __importDefault(require("./build/100-fresh-tokens.json"));
 const _10_tokens_json_1 = __importDefault(require("./build/10-tokens.json"));
 const _10_fresh_tokens_json_1 = __importDefault(require("./build/10-fresh-tokens.json"));
+const _728126428_tokens_json_1 = __importDefault(require("./build/728126428-tokens.json"));
+const _728126428_fresh_tokens_json_1 = __importDefault(require("./build/728126428-fresh-tokens.json"));
 exports.TOKEN_LIST = {
     // avalanche
     43114: _43114_tokens_json_1.default,
@@ -34,6 +36,9 @@ exports.TOKEN_LIST = {
     // optimism
     10: _10_tokens_json_1.default,
     optimism: _10_tokens_json_1.default,
+    // tron
+    728126428: _728126428_tokens_json_1.default,
+    tron: _728126428_tokens_json_1.default,
 };
 exports.FRESH_TOKEN_LIST = {
     // celo
@@ -51,5 +56,8 @@ exports.FRESH_TOKEN_LIST = {
     // optimism
     10: _10_fresh_tokens_json_1.default,
     optimism: _10_fresh_tokens_json_1.default,
+    // tron
+    728126428: _728126428_fresh_tokens_json_1.default,
+    tron: _728126428_fresh_tokens_json_1.default,
 };
 exports.default = exports.TOKEN_LIST;
