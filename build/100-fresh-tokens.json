@@ -56,6 +56,14 @@
     "logoURI": "https://raw.githubusercontent.com/centfinance/assets/master/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png"
   },
   {
+    "chainId": 100,
+    "address": "0x3F56e0c36d275367b8C502090EDF38289b3dEa0d",
+    "name": "Mai Finance",
+    "decimals": 18,
+    "symbol": "MAI",
+    "logoURI": "https://www.mai.finance/mai-logo.svg"
+  },
+  {
     "address": "0xb7D311E2Eb55F2f68a9440da38e7989210b9A05e",
     "chainId": 100,
     "name": "Stake on xDai",
@@ -176,12 +184,12 @@
     "logoURI": "https://assets.coingecko.com/coins/images/13547/small/BAO.png"
   },
   {
-    "name": "Basic Attention Token on xDai",
-    "address": "0xC6cC63f4AA25BBD4453eB5F3a0DfE546feF9b2f3",
-    "symbol": "BAT",
-    "decimals": 18,
+    "name": "Base Protocol on xDai",
+    "address": "0x699D001ef13B15335193bC5FAd6CFC6747eeE8BE",
+    "symbol": "BASE",
+    "decimals": 9,
     "chainId": 100,
-    "logoURI": "https://etherscan.io/token/images/bat.png"
+    "logoURI": "https://etherscan.io/token/images/baseprotocol_32.png"
   },
   {
     "name": "Bancor Network Token on xDai",
@@ -190,14 +198,6 @@
     "decimals": 18,
     "chainId": 100,
     "logoURI": "https://etherscan.io/token/images/bancor_32.png"
-  },
-  {
-    "name": "Celsius on xDai",
-    "address": "0x0aCD91f92Fe07606ab51EA97d8521E29D110fD09",
-    "symbol": "CEL",
-    "decimals": 4,
-    "chainId": 100,
-    "logoURI": "https://etherscan.io/token/images/celsiustoken1_28.png"
   },
   {
     "chainId": 100,
@@ -287,6 +287,14 @@
     "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2/logo.png"
   },
   {
+    "name": "Ocean Token on xDai",
+    "address": "0x51732a6fC4673d1aCca4c047F5465922716508Ad",
+    "symbol": "OCEAN",
+    "decimals": 18,
+    "chainId": 100,
+    "logoURI": "https://etherscan.io/token/images/oceantoken_28.png"
+  },
+  {
     "name": "Meta USD",
     "address": "0x7300AaFC0Ef0d47Daeb850f8b6a1931b40aCab33",
     "symbol": "mUSD",
@@ -341,6 +349,14 @@
     "decimals": 18,
     "chainId": 100,
     "logoURI": "https://etherscan.io/token/images/Rocketpool_32.png"
+  },
+  {
+    "name": "Synth sETH on xDai",
+    "address": "0x8F365b41B98Fe84aCB287540b4B4AB633e07EDb2",
+    "symbol": "SETH",
+    "decimals": 18,
+    "chainId": 100,
+    "logoURI": "https://etherscan.io/token/images/SynthetixsETH_32.png"
   },
   {
     "name": "Unisocks",
@@ -469,14 +485,6 @@
     "decimals": 18,
     "symbol": "HOPR",
     "logoURI": "https://raw.githubusercontent.com/balancer-labs/assets/master/assets/0xf5581dfefd8fb0e4aec526be659cfab1f8c781da.png"
-  },
-  {
-    "chainId": 100,
-    "address": "0x3F56e0c36d275367b8C502090EDF38289b3dEa0d",
-    "name": "Mai Finance",
-    "decimals": 18,
-    "symbol": "MAI",
-    "logoURI": "https://www.mai.finance/mai-logo.svg"
   },
   {
     "chainId": 100,

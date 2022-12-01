@@ -56,6 +56,14 @@
     "logoURI": "https://raw.githubusercontent.com/centfinance/assets/master/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png"
   },
   {
+    "chainId": 100,
+    "address": "0x3F56e0c36d275367b8C502090EDF38289b3dEa0d",
+    "name": "Mai Finance",
+    "decimals": 18,
+    "symbol": "MAI",
+    "logoURI": "https://www.mai.finance/mai-logo.svg"
+  },
+  {
     "address": "0xb7D311E2Eb55F2f68a9440da38e7989210b9A05e",
     "chainId": 100,
     "name": "Stake on xDai",
@@ -573,14 +581,6 @@
     "decimals": 18,
     "symbol": "HOPR",
     "logoURI": "https://raw.githubusercontent.com/balancer-labs/assets/master/assets/0xf5581dfefd8fb0e4aec526be659cfab1f8c781da.png"
-  },
-  {
-    "chainId": 100,
-    "address": "0x3F56e0c36d275367b8C502090EDF38289b3dEa0d",
-    "name": "Mai Finance",
-    "decimals": 18,
-    "symbol": "MAI",
-    "logoURI": "https://www.mai.finance/mai-logo.svg"
   },
   {
     "chainId": 100,
