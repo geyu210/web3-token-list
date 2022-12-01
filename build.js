@@ -58,11 +58,11 @@ const TOKEN_LIST = {
         'https://raw.githubusercontent.com/elkfinance/tokens/main/all.tokenlist.json',
         'https://docs.velodrome.finance/tokenlist.json',
     ],
-    // tron
-    728126428: [
-        'https://list.justswap.link/justswap.json',
-        'https://list.tronalliance.cc/tronalliance.json'
-    ]
+    // // tron
+    // 728126428: [
+    //     'https://list.justswap.link/justswap.json',
+    //     'https://list.tronalliance.cc/tronalliance.json'
+    // ]
 }
 
 const RPC_URL = {
@@ -82,8 +82,8 @@ const RPC_URL = {
     43114: 'https://rpc.ankr.com/avalanche',
     // optimism
     10: 'https://rpc.ankr.com/optimism',
-    // tron
-    728126428: process.env.TRON_JSONRPC_URL,
+    // // tron
+    // 728126428: process.env.TRON_JSONRPC_URL,
 }
 
 function validateToken(chainId, token) {
