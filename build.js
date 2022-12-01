@@ -1,12 +1,27 @@
 #!/usr/bin/env node
+require('dotenv').config()
 const fs = require("fs")
 const axios = require('axios').default
 const utils = require('web3-utils')
 const { createAlchemyWeb3 } = require('@alch/alchemy-web3')
 const Promise = require('bluebird')
-const ERC20 = require('./erc20.json')
+const ERC20ABI = require('./abis/ERC20.json')
+const IUniswapV1FactoryABI = require('./abis/IUniswapV1Factory.json')
+const TronMulticallABI = require('./abis/TronMulticall.json')
+const TronWeb = require("tronweb")
+const Web3 = require('web3')
 
 const TOKEN_LIST = {
+    //Eth main
+    1:[
+        'https://raw.githubusercontent.com/Uniswap/default-token-list/main/src/tokens/mainnet.json',
+        'https://raw.githubusercontent.com/sushiswap/list/master/lists/token-lists/default-token-list/tokens/ethereum.json',
+    ],
+    3:[
+        'https://raw.githubusercontent.com/Uniswap/default-token-list/main/src/tokens/ropsten.json',
+        'https://raw.githubusercontent.com/sushiswap/list/master/lists/token-lists/testnet-token-list/tokens/ropsten.json',
+        
+    ],
     // avalanche
     43114: [
         'https://raw.githubusercontent.com/traderjoe-xyz/joe-tokenlists/main/joe.tokenlist.json',
@@ -19,6 +34,7 @@ const TOKEN_LIST = {
         'https://raw.githubusercontent.com/Ubeswap/default-token-list/master/ubeswap.token-list.json',
         'https://raw.githubusercontent.com/Ubeswap/default-token-list/master/ubeswap-experimental.token-list.json',
         'https://raw.githubusercontent.com/centfinance/Symmetric.WebInterface-v2/symmetric-v2/src/data/listed.tokenlist.json',
+        'https://celo-org.github.io/celo-token-list/celo.tokenlist.json',
     ],
     44787: [
         'https://raw.githubusercontent.com/Ubeswap/default-token-list/master/ubeswap-experimental.token-list.json',
@@ -51,7 +67,12 @@ const TOKEN_LIST = {
         'https://data.zipswap.fi/tokenlist.json',
         'https://raw.githubusercontent.com/elkfinance/tokens/main/all.tokenlist.json',
         'https://docs.velodrome.finance/tokenlist.json',
-    ]
+    ],
+    // // tron
+    // 728126428: [
+    //     'https://list.justswap.link/justswap.json',
+    //     'https://list.tronalliance.cc/tronalliance.json'
+    // ]
 }
 
 const RPC_URL = {
@@ -70,7 +91,9 @@ const RPC_URL = {
     // avalanche
     43114: 'https://rpc.ankr.com/avalanche',
     // optimism
-    10: 'https://rpc.ankr.com/optimism'
+    10: 'https://rpc.ankr.com/optimism',
+    // // tron
+    // 728126428: process.env.TRON_JSONRPC_URL,
 }
 
 function validateToken(chainId, token) {
@@ -85,13 +108,19 @@ async function isTokenFresh(erc20Contract, latestBlock, lookBackBlocks) {
     for (let fromBlock = latestBlock - blockIncrement;
         fromBlock > latestBlock - lookBackBlocks;
         fromBlock -= blockIncrement) {
-        const toBlock = Math.min(latestBlock, fromBlock + blockIncrement)
-        const pastTransfers = await erc20Contract.getPastEvents("Transfer", {
-            fromBlock, toBlock
-        })
-        if (pastTransfers.length) {
-            // found transfers, token is fresh enough
-            return true
+        try {
+            const toBlock = Math.min(latestBlock, fromBlock + blockIncrement)
+            const pastTransfers = await erc20Contract.getPastEvents("Transfer", {
+                fromBlock, toBlock
+            })
+            if (pastTransfers.length) {
+                // found transfers, token is fresh enough
+                return true
+            }
+        } catch (e) {
+            if (e.message.includes('query returned more than 10000 results'))
+                return true
+            throw e
         }
     }
     return false
@@ -109,7 +138,7 @@ async function filterFreshTokens(chainId, tokens, lookBackBlocks) {
     const web3 = createAlchemyWeb3(rpcUrl)
     const latestBlock = await web3.eth.getBlockNumber()
     return await Promise.map(tokens, async (token) => {
-        const tokenContract = new web3.eth.Contract(ERC20, token.address)
+        const tokenContract = new web3.eth.Contract(ERC20ABI, token.address)
         if (await isTokenFresh(tokenContract, latestBlock, lookBackBlocks)) {
             console.info(`chain ${chainId} ${token.symbol} is fresh`)
             return token
@@ -152,6 +181,11 @@ async function generate(chainId) {
         }
 
         for (const token of rawTokens) {
+            if (token.address.startsWith('T') && token.chainId == 1) {
+                // Deal with Tron token
+                token.address = TronWeb.address.toHex(token.address).replace('41', '0x')
+                token.chainId = parseInt(chainId)
+            }
             if (!validateToken(chainId, token)) {
                 continue
             }
@@ -180,6 +214,130 @@ async function generate(chainId) {
     return combined
 }
 
+async function getTokenInfos(
+    { web3, multicall, tokenAddrs, chainId }
+) {
+    const calls = []
+    for (const tokenAddr of tokenAddrs) {
+        const token = new web3.eth.Contract(ERC20ABI, tokenAddr)
+        calls.push(
+            [tokenAddr, token.methods.decimals().encodeABI()],
+            [tokenAddr, token.methods.name().encodeABI()],
+            [tokenAddr, token.methods.symbol().encodeABI()],
+        )
+    }
+    const res = await multicall.methods.aggregate(calls)
+        .call()
+        .then(({returnData}) => returnData)
+    const tokenInfos = []
+    for (let i = 0; i < res.length - 3; i += 3) {
+        const decimals = Number(web3.eth.abi.decodeParameter('uint8', res[i]))
+        const name = web3.eth.abi.decodeParameter('string', res[i + 1])
+        const symbol = web3.eth.abi.decodeParameter('string', res[i + 2])
+        tokenInfos.push({
+            address: tokenAddrs[i / 3],
+            chainId,
+            decimals,
+            name,
+            symbol,
+        })
+    }
+    return tokenInfos;
+}
+
+async function tronUniV1Scan() {
+    const web3 = new Web3(process.env.TRON_JSONRPC_URL)
+    const multicall = new web3.eth.Contract(TronMulticallABI, '0xb8F050B6745510b005E0dc941FcEc5614027d5B7');
+    const factory = new web3.eth.Contract(IUniswapV1FactoryABI, '0xeEd9e56a5CdDaA15eF0C42984884a8AFCf1BdEbb');
+    const numTokens = await factory.methods.tokenCount().call();
+    const batchSize = 2000;
+
+    // Fetch tokens
+    const tokenCalls = []
+    for (let i = 1; i <= numTokens; i += batchSize) {
+        const upTo = Math.min(i + batchSize - 1, numTokens);
+        const calls = []
+        for (let j = i; j <= upTo; j++) {
+            calls.push([
+                factory.options.address,
+                factory.methods.getTokenWithId(j).encodeABI(),
+            ])
+        }
+        tokenCalls.push(calls)
+    }
+    const tokens = await Promise.all(tokenCalls.map((tokenCall) => {
+        return multicall.methods.aggregate(tokenCall)
+            .call()
+            .then(({returnData}) =>
+                returnData.map(
+                    (data) => web3.eth.abi.decodeParameter('address', data)
+                )
+            )
+    })).then((arr) => arr.flat());
+    console.info(`Fetched ${tokens.length} tokens`);
+
+    // Fetch exchanges
+    const exchangeCalls = []
+    for (let i = 0; i < tokens.length; i += batchSize) {
+        const calls = []
+        const upTo = Math.min(i + batchSize, tokens.length);
+        for (let j = i; j < upTo; j++) {
+            calls.push([
+                factory.options.address,
+                factory.methods.getExchange(tokens[j]).encodeABI(),
+            ])
+        }
+        exchangeCalls.push(calls)
+    }
+    const exchanges = await Promise.all(exchangeCalls.map((exchangeCall) => {
+        return multicall.methods.aggregate(exchangeCall)
+            .call()
+            .then(({returnData}) =>
+                returnData.map(
+                    (data) => web3.eth.abi.decodeParameter('address', data)
+                )
+            )
+    })).then((arr) => arr.flat());
+    console.info(`Fetched ${exchanges.length} exchanges`);
+
+    // Fetch exchange TRX liquidities
+    const balanceCalls = []
+    for (let i = 0; i < exchanges.length; i += batchSize) {
+        const calls = []
+        const upTo = Math.min(i + batchSize, exchanges.length);
+        for (let j = i; j < upTo; j++) {
+            calls.push([
+                multicall.options.address,
+                multicall.methods.getTrxBalance(exchanges[j]).encodeABI(),
+            ])
+        }
+        balanceCalls.push(calls)
+    }
+    const balances = await Promise.all(balanceCalls.map((balanceCall) => {
+        return multicall.methods.aggregate(balanceCall)
+            .call()
+            .then(({returnData}) =>
+                returnData.map(
+                    (data) => web3.eth.abi.decodeParameter('uint256', data)
+                )
+            )
+    })).then((arr) => arr.flat());
+    console.info(`Fetched ${balances.length} balances`);
+
+    const zipped = []
+    for (let i = 0; i < balances.length; i++) {
+        zipped.push([tokens[i], exchanges[i], balances[i]])
+    }
+
+    const freshTokens = []
+    for (const [token, _, trxBalance] of zipped) {
+        if (Number(utils.fromWei(trxBalance, "mwei")) > 15_000_000) {
+            freshTokens.push(token)
+        }
+    }
+    return await getTokenInfos({ web3, multicall, tokenAddrs: freshTokens, chainId: 728126428 })
+}
+
 async function run(networkId) {
     for (const chainId in TOKEN_LIST) {
         if (networkId && chainId !== networkId) {
@@ -187,6 +345,11 @@ async function run(networkId) {
             continue
         }
         const tokens = await generate(chainId)
+        if (chainId === '728126428') {
+            const tronScannedTokens = await tronUniV1Scan()
+            console.log(`Fetched ${tronScannedTokens.length} tokens from Tron UniV1`)
+            tokens.push(...tronScannedTokens)
+        }
         const outputFile = `./build/${chainId}-tokens.json`
         fs.writeFileSync(outputFile, JSON.stringify(tokens, null, 2))
 
