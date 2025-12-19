@@ -1,6 +1,6 @@
 [
   {
-    "name": "wrapped.com Ethereum",
+    "name": "wrapped.com ETH",
     "address": "0x2DEf4285787d58a2f811AF24755A8150622f4361",
     "symbol": "cETH",
     "decimals": 18,
@@ -45,7 +45,7 @@
     "symbol": "CELO",
     "decimals": 18,
     "chainId": 42220,
-    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELO.png"
+    "logoURI": "https://celo-org.github.io/celo-token-list/assets/celo_logo.svg"
   },
   {
     "address": "0x64dEFa3544c695db8c535D289d843a189aa26b98",
@@ -69,7 +69,7 @@
     "symbol": "cUSD",
     "decimals": 18,
     "chainId": 42220,
-    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cUSD.png"
+    "logoURI": "https://raw.githubusercontent.com/mento-protocol/mento-web/refs/heads/main/public/tokens/cUSD.svg"
   },
   {
     "name": "Duniapay West African CFA franc",
@@ -101,7 +101,7 @@
     "symbol": "cEUR",
     "decimals": 18,
     "chainId": 42220,
-    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cEUR.png"
+    "logoURI": "https://raw.githubusercontent.com/mento-protocol/mento-web/refs/heads/main/public/tokens/cEUR.svg"
   },
   {
     "address": "0xD15EC721C2A896512Ad29C671997DD68f9593226",
@@ -131,8 +131,8 @@
     "address": "0x2A3684e9Dc20B857375EA04235F2F7edBe818FA7",
     "chainId": 42220,
     "name": "Optics USDC",
-    "symbol": "USDCxV1",
-    "decimals": 6,
+    "symbol": "USDC",
+    "decimals": 18,
     "logoURI": "https://raw.githubusercontent.com/centfinance/Symmetric.Assets/master/assets/asset_USDC.png"
   },
   {
@@ -248,6 +248,174 @@
     "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_SOURCE.png"
   },
   {
+    "address": "0x71e26d0E519D14591b9dE9a0fE9513A398101490",
+    "name": "Ubeswap",
+    "symbol": "UBE",
+    "chainId": 42220,
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png"
+  },
+  {
+    "name": "USD Coin",
+    "address": "0xcebA9300f2b948710d2653dD7B07f33A8B32118C",
+    "symbol": "USDC",
+    "decimals": 6,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDC.svg"
+  },
+  {
+    "name": "Tether USD",
+    "address": "0x48065fbBE25f71C9282ddf5e1cD6D6A887483D5e",
+    "symbol": "USD₮",
+    "decimals": 6,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+  },
+  {
+    "name": "Glo Dollar",
+    "address": "0x4F604735c1cF31399C6E711D5962b2B3E0225AD3",
+    "symbol": "USDGLO",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://app.glodollar.org/glo-logo.svg"
+  },
+  {
+    "name": "Moola cUSD",
+    "address": "0x918146359264C492BD6934071c6Bd31C854EDBc3",
+    "symbol": "mcUSD",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_mcUSD.png"
+  },
+  {
+    "name": "Moola cEUR",
+    "address": "0xE273Ad7ee11dCfAA87383aD5977EE1504aC07568",
+    "symbol": "mcEUR",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_mcEUR.png"
+  },
+  {
+    "address": "0x4BD6C2A3c7e0141dD7aa3e71008Cbe68D86Da53E",
+    "name": "Celon Musk",
+    "symbol": "CELON",
+    "chainId": 42220,
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CELON.png"
+  },
+  {
+    "address": "0x2E6C05f1f7D1f4Eb9A088bf12257f1647682b754",
+    "name": "Regen Network",
+    "symbol": "axlREGEN",
+    "decimals": 6,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_axlREGEN.png"
+  },
+  {
+    "address": "0x000BE46901ea6f7ac2c1418D158f2f0A80992c07",
+    "name": "Pony Token",
+    "symbol": "PONY",
+    "chainId": 42220,
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_PONY.png"
+  },
+  {
+    "name": "Moola",
+    "address": "0x17700282592D6917F6A73D0bF8AcCf4D578c131e",
+    "symbol": "MOO",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_MOO.png"
+  },
+  {
+    "name": "Moola CELO",
+    "address": "0x7D00cd74FF385c955EA3d79e47BF06bD7386387D",
+    "symbol": "mCELO",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_mCELO.png"
+  },
+  {
+    "name": "JumpToken",
+    "address": "0x1d18d0386F51ab03E7E84E71BdA1681EbA865F1f",
+    "symbol": "JMPT",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://celo-org.github.io/celo-token-list/assets/jumpToken.png"
+  },
+  {
+    "address": "0x2b9018CeB303D540BbF08De8e7De64fDDD63396C",
+    "name": "impactMarket",
+    "symbol": "PACT",
+    "chainId": 42220,
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_PACT.png"
+  },
+  {
+    "name": "Good Dollar",
+    "address": "0x62B8B11039FcfE5aB0C56E502b1C372A3d2a9c7A",
+    "symbol": "G$",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/GoodDollar/GoodDAPP/master/src/assets/Splash/logo.svg"
+  },
+  {
+    "name": "Celo Real",
+    "address": "0xe8537a3d056DA446677B9E9d6c5dB704EaAb4787",
+    "symbol": "cREAL",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/mento-protocol/mento-web/refs/heads/main/public/tokens/cREAL.svg"
+  },
+  {
+    "address": "0xaCFfAe8e57Ec6E394Eb1b41939A8CF7892DbDc51",
+    "name": "Autonolas",
+    "symbol": "OLAS",
+    "chainId": 42220,
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_OLAS.png"
+  },
+  {
+    "address": "0x7b97031b6297bc8e030B07Bd84Ce92FEa1B00c3e",
+    "name": "Commons Protocol",
+    "symbol": "COMMONS",
+    "chainId": 42220,
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_COMMONS.png"
+  },
+  {
+    "address": "0x69345529fFC1140A620B6cFDc91cf784C91D4571",
+    "name": "AnkorX",
+    "symbol": "ANKOR",
+    "chainId": 42220,
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_ANKOR.png"
+  },
+  {
+    "name": "Allbridge",
+    "address": "0x6e512BFC33be36F2666754E996ff103AD1680Cc9",
+    "symbol": "ABR",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_ABR.png"
+  },
+  {
+    "name": "Allbridge AVAX",
+    "address": "0x8E3670FD7B0935d3FE832711deBFE13BB689b690",
+    "symbol": "AVAX",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_AVAX.png"
+  },
+  {
+    "name": "Portal WETH",
+    "address": "0x66803FB87aBd4aaC3cbB3fAd7C3aa01f6F3FB207",
+    "symbol": "WETH",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_ETH.png"
+  },
+  {
     "name": "Poof",
     "address": "0x00400FcbF0816bebB94654259de7273f4A05c762",
     "symbol": "POOF",
@@ -262,6 +430,14 @@
     "decimals": 18,
     "chainId": 42220,
     "logoURI": "https://toucan.earth/img/icons/nct.svg"
+  },
+  {
+    "name": "USDC (Portal from Ethereum)",
+    "address": "0x37f750B7cC259A2f741AF45294f6a16572CF5cAd",
+    "symbol": "USDCet",
+    "decimals": 6,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/certusone/wormhole-token-list/main/assets/USDCet_wh_small.png"
   },
   {
     "name": "Stabilite USD",
@@ -280,22 +456,6 @@
     "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_NTMX.png"
   },
   {
-    "name": "Allbridge SOL",
-    "address": "0x173234922eB27d5138c5e481be9dF5261fAeD450",
-    "symbol": "SOL",
-    "decimals": 18,
-    "chainId": 42220,
-    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_SOL.png"
-  },
-  {
-    "name": "Moola",
-    "address": "0x17700282592D6917F6A73D0bF8AcCf4D578c131e",
-    "symbol": "MOO",
-    "decimals": 18,
-    "chainId": 42220,
-    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_MOO.png"
-  },
-  {
     "name": "Ariswap",
     "address": "0x20677d4f3d0F08e735aB512393524A3CfCEb250C",
     "symbol": "ARI",
@@ -312,20 +472,20 @@
     "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_FTM.png"
   },
   {
+    "name": "PLASTIK Token",
+    "address": "0x27cd006548dF7C8c8e9fdc4A67fa05C2E3CA5CF9",
+    "symbol": "PLASTIK",
+    "decimals": 9,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_PLASTIK.png"
+  },
+  {
     "name": "Poof CELO",
     "address": "0x301a61D01A63c8D670c2B8a43f37d12eF181F997",
     "symbol": "pCELO",
     "decimals": 18,
     "chainId": 42220,
     "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_pCELO.png"
-  },
-  {
-    "name": "USDC (Portal from Ethereum)",
-    "address": "0x37f750B7cC259A2f741AF45294f6a16572CF5cAd",
-    "symbol": "USDCet",
-    "decimals": 6,
-    "chainId": 42220,
-    "logoURI": "https://raw.githubusercontent.com/certusone/wormhole-token-list/main/assets/USDCet_wh_small.png"
   },
   {
     "name": "CeloStarter",
@@ -344,22 +504,6 @@
     "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_SBR.png"
   },
   {
-    "name": "Portal Ether",
-    "address": "0x66803FB87aBd4aaC3cbB3fAd7C3aa01f6F3FB207",
-    "symbol": "ETH",
-    "decimals": 18,
-    "chainId": 42220,
-    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_ETH.png"
-  },
-  {
-    "name": "Allbridge",
-    "address": "0x6e512BFC33be36F2666754E996ff103AD1680Cc9",
-    "symbol": "ABR",
-    "decimals": 18,
-    "chainId": 42220,
-    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_ABR.png"
-  },
-  {
     "name": "Staked Allbridge",
     "address": "0x788BA01f8E2b87c08B142DB46F82094e0bdCad4F",
     "symbol": "xABR",
@@ -368,36 +512,12 @@
     "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_xABR.png"
   },
   {
-    "name": "Moola CELO",
-    "address": "0x7D00cd74FF385c955EA3d79e47BF06bD7386387D",
-    "symbol": "mCELO",
-    "decimals": 18,
-    "chainId": 42220,
-    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_mCELO.png"
-  },
-  {
     "name": "Symmetric",
     "address": "0x8427bD503dd3169cCC9aFF7326c15258Bc305478",
     "symbol": "SYMM",
     "decimals": 18,
     "chainId": 42220,
     "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_SYMM.png"
-  },
-  {
-    "name": "Allbridge AVAX",
-    "address": "0x8E3670FD7B0935d3FE832711deBFE13BB689b690",
-    "symbol": "AVAX",
-    "decimals": 18,
-    "chainId": 42220,
-    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_AVAX.png"
-  },
-  {
-    "name": "Moola cUSD",
-    "address": "0x918146359264C492BD6934071c6Bd31C854EDBc3",
-    "symbol": "mcUSD",
-    "decimals": 18,
-    "chainId": 42220,
-    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_mcUSD.png"
   },
   {
     "name": "Premio",
@@ -432,14 +552,6 @@
     "logoURI": "https://raw.githubusercontent.com/centfinance/assets/master/blockchains/celo/assets/0xA287A3722c367849eFA5c76e96BE36efd65C290e/logo.png"
   },
   {
-    "name": "Anyswap BNB",
-    "address": "0xA649325Aa7C5093d12D6F98EB4378deAe68CE23F",
-    "symbol": "BNB",
-    "decimals": 18,
-    "chainId": 42220,
-    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_BNB.png"
-  },
-  {
     "name": "KnoxEdge",
     "address": "0xa81D9a2d29373777E4082d588958678a6Df5645c",
     "symbol": "KNX",
@@ -456,6 +568,14 @@
     "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_TFBX.png"
   },
   {
+    "name": "Staked Celo",
+    "address": "0xC668583dcbDc9ae6FA3CE46462758188adfdfC24",
+    "symbol": "stCelo",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://celo-org.github.io/celo-token-list/assets/token-stcelo.svg"
+  },
+  {
     "address": "0xD8761DD6c7cB54febD33adD699F5E4440b62E01B",
     "name": "Poof EUR",
     "symbol": "pEUR",
@@ -464,28 +584,12 @@
     "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_pEUR.png"
   },
   {
-    "name": "Moola cEUR",
-    "address": "0xE273Ad7ee11dCfAA87383aD5977EE1504aC07568",
-    "symbol": "mcEUR",
-    "decimals": 18,
-    "chainId": 42220,
-    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_mcEUR.png"
-  },
-  {
     "name": "Immortal",
     "address": "0xE685d21b7B0FC7A248a6A8E03b8Db22d013Aa2eE",
     "decimals": 9,
     "symbol": "IMMO",
     "chainId": 42220,
     "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_IMMO.png"
-  },
-  {
-    "name": "Celo Real",
-    "address": "0xe8537a3d056DA446677B9E9d6c5dB704EaAb4787",
-    "symbol": "cREAL",
-    "decimals": 18,
-    "chainId": 42220,
-    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_cREAL.png"
   },
   {
     "name": "Poof USD",
@@ -518,14 +622,6 @@
     "chainId": 42220,
     "decimals": 18,
     "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_CRV.png"
-  },
-  {
-    "address": "0x3aF556B48469D2398AB7BE1563a0cfd80ea4aC84",
-    "name": "Optics v1 WMATIC",
-    "symbol": "WMATICxV1",
-    "chainId": 42220,
-    "decimals": 18,
-    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_WMATIC.png"
   },
   {
     "address": "0x4213E7aB42dD21366508B18edfc33C29e7cBD81B",
@@ -640,6 +736,22 @@
     "logoURI": "https://assets.coingecko.com/coins/images/21609/small/RJD82RrV_400x400.jpg?1639559164"
   },
   {
+    "name": "Green CELO",
+    "address": "0x8A1639098644A229d08F441ea45A63AE050Ee018",
+    "symbol": "gCELO",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/spiralsprotocol/spirals-brand/main/gCELO.svg"
+  },
+  {
+    "name": "Green cUSD",
+    "address": "0xFB42E2e90fc79CfA6A6B4EBa4877d5Faf4e29287",
+    "symbol": "gcUSD",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/spiralsprotocol/spirals-brand/main/gcUSD.svg"
+  },
+  {
     "name": "cRecy",
     "address": "0x34C11A932853Ae24E845Ad4B633E3cEf91afE583",
     "symbol": "cRecy",
@@ -648,12 +760,12 @@
     "logoURI": "https://user-images.githubusercontent.com/101748448/187026740-27f51d9d-e60d-48e9-b378-416c1eda0cb1.svg"
   },
   {
-    "name": "Staked Celo",
-    "address": "0xC668583dcbDc9ae6FA3CE46462758188adfdfC24",
-    "symbol": "stCelo",
+    "name": "Biochar",
+    "address": "0x50E85c754929840B58614F48e29C64BC78C58345",
+    "symbol": "CHAR",
     "decimals": 18,
     "chainId": 42220,
-    "logoURI": "https://raw.githubusercontent.com/jesse-sawa/celo-token-list/master/assets/token-stcelo.svg"
+    "logoURI": "https://app.toucan.earth/svg/pools/char.svg"
   },
   {
     "name": "DAI Stablecoin (Portal)",
@@ -664,25 +776,153 @@
     "logoURI": "https://raw.githubusercontent.com/certusone/wormhole-token-list/main/assets/DAI_wh_small.png"
   },
   {
-    "address": "0xC7144Fa865c9f3a6836167A51531A2CC8b0ab5fD",
-    "name": "CeloDex.org",
-    "symbol": "CLX",
-    "chainId": 42220,
+    "name": "Allbridge SOL",
+    "address": "0x173234922eB27d5138c5e481be9dF5261fAeD450",
+    "symbol": "SOL",
     "decimals": 18,
-    "logoURI": ""
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_SOL.png"
+  },
+  {
+    "name": "Anyswap BNB",
+    "address": "0xA649325Aa7C5093d12D6F98EB4378deAe68CE23F",
+    "symbol": "BNB",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_BNB.png"
+  },
+  {
+    "name": "AtlasX Carbon Credits",
+    "address": "0xc3377Ea71F1dc8e55Ba360724eff2d7aD62a8670",
+    "symbol": "ATLASX",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://myterrablobs.blob.core.windows.net/public/token-icon.png"
+  },
+  {
+    "name": "Curve DAO Token",
+    "address": "0x173fd7434B8B50dF08e3298f173487ebDB35FD14",
+    "symbol": "CRV",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/curvefi/curve-assets/main/branding/logo.svg"
+  },
+  {
+    "name": "Axelar Wrapped Bitcoin",
+    "address": "0x1a35EE4640b0A3B87705B0A4B45D227Ba60Ca2ad",
+    "symbol": "axlWBTC",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://celo-org.github.io/celo-token-list/assets/axelar_wbtc.svg"
+  },
+  {
+    "name": "Wormhole Wrapped Bitcoin",
+    "address": "0xd71Ffd0940c920786eC4DbB5A12306669b5b81EF",
+    "symbol": "WBTC",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://celo-org.github.io/celo-token-list/assets/wormhole_wbtc.png"
+  },
+  {
+    "name": "Axelar WETH",
+    "address": "0xb829b68f57CC546dA7E5806A929e53bE32a4625D",
+    "symbol": "axlEth",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://celo-org.github.io/celo-token-list/assets/axelar_eth.png"
+  },
+  {
+    "name": "agEUR",
+    "address": "0xC16B81Af351BA9e64C1a069E3Ab18c244A1E3049",
+    "symbol": "agEUR",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/AngleProtocol/angle-assets/main/0_tokens/agEUR/cross-chain/agEUR-celo.svg"
+  },
+  {
+    "name": "EURC (Wormhole)",
+    "address": "0xBddC3554269053544bE0d6d027a73271225E9859",
+    "symbol": "EURC",
+    "decimals": 6,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/wormhole-foundation/wormhole-token-list/main/assets/EURC_wh.png"
+  },
+  {
+    "address": "0x456a3D042C0DbD3db53D5489e98dFb038553B0d0",
+    "chainId": 42220,
+    "name": "Mento cKES",
+    "symbol": "cKES",
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/mento-protocol/mento-web/main/public/tokens/cKES.svg"
+  },
+  {
+    "name": "Wrapped BTC (Celo native bridge)",
+    "address": "0x8aC2901Dd8A1F17a1A4768A6bA4C3751e3995B2D",
+    "symbol": "WBTC",
+    "decimals": 8,
+    "chainId": 42220,
+    "logoURI": "https://celoscan.io/token/images/wbtccelo_32.svg"
+  },
+  {
+    "address": "0x105d4A9306D2E55a71d2Eb95B81553AE1dC20d7B",
+    "chainId": 42220,
+    "name": "Mento PUSO",
+    "symbol": "PUSO",
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/mento-protocol/mento-web/main/public/tokens/PUSO.svg"
+  },
+  {
+    "address": "0x8A567e2aE79CA692Bd748aB832081C45de4041eA",
+    "chainId": 42220,
+    "name": "Mento cCOP",
+    "symbol": "cCOP",
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/mento-protocol/mento-web/main/public/tokens/cCOP.svg"
+  },
+  {
+    "address": "0xfAeA5F3404bbA20D3cc2f8C4B0A888F55a3c7313",
+    "chainId": 42220,
+    "name": "Mento cGHS",
+    "symbol": "cGHS",
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/mento-protocol/mento-web/main/public/tokens/cGHS.svg"
+  },
+  {
+    "name": "ECO CFA (West African Franc)",
+    "address": "0x73F93dcc49cB8A239e2032663e9475dd5ef29A08",
+    "symbol": "eXOF",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://raw.githubusercontent.com/mento-protocol/mento-web/refs/heads/main/public/tokens/eXOF.svg"
+  },
+  {
+    "name": "COP Minteo",
+    "address": "0xC92E8Fc2947E32F2B574CCA9F2F12097A71d5606",
+    "symbol": "COPM",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://celo-org.github.io/celo-token-list/assets/minteo_copm.png"
+  },
+  {
+    "name": "PrideToken",
+    "address": "0xAE62Ca7e7Bc80C800DADc1c4b9175800033537cd",
+    "symbol": "PRD",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://pridefunding.org/assets/PrideToken/PrideTokenbg.svg"
+  },
+  {
+    "name": "wETH (Celo native bridge)",
+    "address": "0xD221812de1BD094f35587EE8E174B07B6167D9Af",
+    "symbol": "wETH",
+    "decimals": 18,
+    "chainId": 42220,
+    "logoURI": "https://celoscan.io/token/images/wethcelo_64.png"
   },
   {
     "address": "0xFbdd194376de19a88118e84E279b977f165d01b8",
     "name": "Avalanche",
     "symbol": "AVAX",
-    "chainId": 42220,
-    "decimals": 18,
-    "logoURI": ""
-  },
-  {
-    "address": "0x37191488FbEe23652eC7794Cfb81020528968C7d",
-    "name": "cTOKEN",
-    "symbol": "cTOKEN",
     "chainId": 42220,
     "decimals": 18,
     "logoURI": ""
@@ -704,19 +944,19 @@
     "logoURI": ""
   },
   {
-    "address": "0x0631DD22cd83508f50ea11e1CAE82801Bb9904aC",
-    "name": "Cellular Finance Token",
-    "symbol": "CELL",
-    "chainId": 42220,
-    "decimals": 18,
-    "logoURI": ""
-  },
-  {
     "address": "0xb59b1c36e4466F19c84dD2aeCCace718b32C4B61",
     "chainId": 42220,
     "name": "Staked CELO",
     "symbol": "stCELO",
     "decimals": 18,
     "logoURI": ""
+  },
+  {
+    "address": "0x7FF62f59e3e89EA34163EA1458EEBCc81177Cfb6",
+    "chainId": 42220,
+    "name": "Mento",
+    "symbol": "MENTO",
+    "decimals": 18,
+    "logoURI": "https://raw.githubusercontent.com/mento-protocol/mento-web/main/public/tokens/MENTO.svg"
   }
 ]

@@ -1,24 +1,16 @@
 [
    {
-      "address": "0xC7144Fa865c9f3a6836167A51531A2CC8b0ab5fD",
-      "name": "CeloDex.org",
-      "symbol": "CLX",
+      "name": "Tether USD",
+      "address": "0x48065fbBE25f71C9282ddf5e1cD6D6A887483D5e",
+      "symbol": "USD₮",
+      "decimals": 6,
       "chainId": 42220,
-      "decimals": 18,
-      "logoURI": ""
+      "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
    },
    {
       "address": "0xFbdd194376de19a88118e84E279b977f165d01b8",
       "name": "Avalanche",
       "symbol": "AVAX",
-      "chainId": 42220,
-      "decimals": 18,
-      "logoURI": ""
-   },
-   {
-      "address": "0x37191488FbEe23652eC7794Cfb81020528968C7d",
-      "name": "cTOKEN",
-      "symbol": "cTOKEN",
       "chainId": 42220,
       "decimals": 18,
       "logoURI": ""
@@ -40,27 +32,51 @@
       "logoURI": ""
    },
    {
-      "address": "0x0631DD22cd83508f50ea11e1CAE82801Bb9904aC",
-      "name": "Cellular Finance Token",
-      "symbol": "CELL",
-      "chainId": 42220,
-      "decimals": 18,
-      "logoURI": ""
-   },
-   {
-      "address": "0x2A3684e9Dc20B857375EA04235F2F7edBe818FA7",
-      "chainId": 42220,
-      "name": "Optics USDC",
-      "symbol": "USDCxV1",
-      "decimals": 6,
-      "logoURI": "https://raw.githubusercontent.com/centfinance/Symmetric.Assets/master/assets/asset_USDC.png"
-   },
-   {
       "address": "0xb59b1c36e4466F19c84dD2aeCCace718b32C4B61",
       "chainId": 42220,
       "name": "Staked CELO",
       "symbol": "stCELO",
       "decimals": 18,
       "logoURI": ""
+   },
+   {
+      "address": "0x7FF62f59e3e89EA34163EA1458EEBCc81177Cfb6",
+      "chainId": 42220,
+      "name": "Mento",
+      "symbol": "MENTO",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/mento-protocol/mento-web/main/public/tokens/MENTO.svg"
+   },
+   {
+      "address": "0x105d4A9306D2E55a71d2Eb95B81553AE1dC20d7B",
+      "chainId": 42220,
+      "name": "Mento PUSO",
+      "symbol": "PUSO",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/mento-protocol/mento-web/main/public/tokens/PUSO.svg"
+   },
+   {
+      "address": "0x456a3D042C0DbD3db53D5489e98dFb038553B0d0",
+      "chainId": 42220,
+      "name": "Mento cKES",
+      "symbol": "cKES",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/mento-protocol/mento-web/main/public/tokens/cKES.svg"
+   },
+   {
+      "address": "0x8A567e2aE79CA692Bd748aB832081C45de4041eA",
+      "chainId": 42220,
+      "name": "Mento cCOP",
+      "symbol": "cCOP",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/mento-protocol/mento-web/main/public/tokens/cCOP.svg"
+   },
+   {
+      "address": "0xfAeA5F3404bbA20D3cc2f8C4B0A888F55a3c7313",
+      "chainId": 42220,
+      "name": "Mento cGHS",
+      "symbol": "cGHS",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/mento-protocol/mento-web/main/public/tokens/cGHS.svg"
    }
 ]

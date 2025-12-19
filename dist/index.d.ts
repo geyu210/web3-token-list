@@ -1,4 +1,4 @@
-export declare type Token = {
+export type Token = {
     chainId: number;
     address: string;
     decimals: number;
