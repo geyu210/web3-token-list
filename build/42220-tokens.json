@@ -131,8 +131,8 @@
     "address": "0x2A3684e9Dc20B857375EA04235F2F7edBe818FA7",
     "chainId": 42220,
     "name": "Optics USDC",
-    "symbol": "USDC",
-    "decimals": 18,
+    "symbol": "USDCxV1",
+    "decimals": 6,
     "logoURI": "https://raw.githubusercontent.com/centfinance/Symmetric.Assets/master/assets/asset_USDC.png"
   },
   {
@@ -920,9 +920,25 @@
     "logoURI": "https://celoscan.io/token/images/wethcelo_64.png"
   },
   {
+    "address": "0xC7144Fa865c9f3a6836167A51531A2CC8b0ab5fD",
+    "name": "CeloDex.org",
+    "symbol": "CLX",
+    "chainId": 42220,
+    "decimals": 18,
+    "logoURI": ""
+  },
+  {
     "address": "0xFbdd194376de19a88118e84E279b977f165d01b8",
     "name": "Avalanche",
     "symbol": "AVAX",
+    "chainId": 42220,
+    "decimals": 18,
+    "logoURI": ""
+  },
+  {
+    "address": "0x37191488FbEe23652eC7794Cfb81020528968C7d",
+    "name": "cTOKEN",
+    "symbol": "cTOKEN",
     "chainId": 42220,
     "decimals": 18,
     "logoURI": ""
@@ -939,6 +955,14 @@
     "address": "0x091733f0245A4395d8BfE42C74A619328269F12F",
     "name": "KnoxDAO",
     "symbol": "KNOX",
+    "chainId": 42220,
+    "decimals": 18,
+    "logoURI": ""
+  },
+  {
+    "address": "0x0631DD22cd83508f50ea11e1CAE82801Bb9904aC",
+    "name": "Cellular Finance Token",
+    "symbol": "CELL",
     "chainId": 42220,
     "decimals": 18,
     "logoURI": ""
