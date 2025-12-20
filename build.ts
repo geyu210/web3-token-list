@@ -1,3 +1,4 @@
+//npx ts-node build.ts 8453 --rpc 
 import 'dotenv/config';
 import fs from 'fs';
 import axios from 'axios';
@@ -24,7 +25,8 @@ const TOKEN_LIST: Record<number, string[]> = {
     8453: [
         'https://raw.githubusercontent.com/sushiswap/list/master/lists/token-lists/default-token-list/tokens/base.json',
         'https://raw.githubusercontent.com/ethereum-optimism/ethereum-optimism.github.io/master/optimism.tokenlist.json',
-        'https://static.base.org/token-list.json',
+        // 'https://static.base.org/token-list.json', // broken
+        'https://raw.githubusercontent.com/StabilityNexus/TokenList/main/base-tokens.json',
     ],
 }
 
@@ -42,7 +44,9 @@ function validateToken(chainId: number, token: any) {
     return parseInt(token.chainId) === chainId
 }
 
-async function isTokenFresh(client: any, tokenAddress: `0x${string}`, latestBlock: bigint, lookBackBlocks: bigint) {
+const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+
+async function isTokenFresh(client: any, tokenAddress: `0x${string}`, latestBlock: bigint, lookBackBlocks: bigint, retryCount = 0): Promise<boolean> {
     try {
         const fromBlock = latestBlock - lookBackBlocks > 0n ? latestBlock - lookBackBlocks : 0n;
         const logs = await client.getLogs({
@@ -57,19 +61,38 @@ async function isTokenFresh(client: any, tokenAddress: `0x${string}`, latestBloc
         if (
             e.message.includes('limit exceeded') ||
             e.message.includes('too many results') ||
-            e.message.includes('took too long') ||
-            e.message.includes('timed out') ||
             e.message.includes('too large') ||
             e.message.includes('range')
         ) {
             return true;
         }
+
+        // Network errors or rate limits - retry or assume fresh to be safe
+        const msg = e.message.toLowerCase();
+        if (
+            msg.includes('took too long') ||
+            msg.includes('timed out') ||
+            msg.includes('503') ||
+            msg.includes('429') ||
+            msg.includes('network') ||
+            msg.includes('disconnected') ||
+            msg.includes('connection')
+        ) {
+            if (retryCount < 3) {
+                const waitTime = (msg.includes('429') || msg.includes('503')) ? 5000 : 1000 * (retryCount + 1);
+                await sleep(waitTime);
+                return isTokenFresh(client, tokenAddress, latestBlock, lookBackBlocks, retryCount + 1);
+            }
+            console.warn(`Failed to check freshness for ${tokenAddress} after retries, assuming active: ${e.message}`);
+            return true; // Fail open to avoid deleting valid tokens on RPC issues
+        }
+
         return false;
     }
 }
 
 // filter for tokens that have had a transfer within recent blocks
-async function filterFreshTokens(chainId: number, tokens: any[], lookBackBlocks: bigint = 100000n) {
+async function filterFreshTokens(chainId: number, tokens: any[], rpcUrlOverride?: string, lookBackBlocks: bigint = 100000n) {
     const chain = CHAINS[chainId];
     if (!chain) return [];
 
@@ -78,7 +101,7 @@ async function filterFreshTokens(chainId: number, tokens: any[], lookBackBlocks:
         42220: 'https://forno.celo.org',
     };
 
-    const rpcUrl = (chainId === 8453 ? process.env.BASE_RPC_URL : process.env.CELO_RPC_URL) || defaultPublicRpc[chainId];
+    const rpcUrl = rpcUrlOverride || (chainId === 8453 ? process.env.BASE_RPC_URL : process.env.CELO_RPC_URL) || defaultPublicRpc[chainId];
 
     const client = createPublicClient({
         chain,
@@ -116,21 +139,38 @@ async function filterFreshTokens(chainId: number, tokens: any[], lookBackBlocks:
         }
     }
 
-    try {
-        const logs = await fetchLogs(fromBlock, latestBlock);
-        const activeAddresses = new Set(logs.map(log => getAddress(log.address)));
-        return tokens.filter(token => activeAddresses.has(getAddress(token.address)));
-    } catch (e: any) {
-        console.warn(`chain ${chainId} failed to fetch logs even with splitting, falling back to individual checks: ${e.message}`);
-        const results = await Promise.all(tokens.map(async (token) => {
-            const fresh = await isTokenFresh(client, token.address as `0x${string}`, latestBlock, lookBackBlocks);
-            if (fresh) {
-                return token;
-            }
-            return null;
-        }));
-        return results.filter(t => t !== null);
+    // For Base, fetching all logs is too heavy and often fails on public RPCs.
+    // Skip directly to individual checks with batching.
+    if (chainId !== 8453) {
+        try {
+            const logs = await fetchLogs(fromBlock, latestBlock);
+            const activeAddresses = new Set(logs.map(log => getAddress(log.address)));
+            return tokens.filter(token => activeAddresses.has(getAddress(token.address)));
+        } catch (e: any) {
+            console.warn(`chain ${chainId} failed to fetch logs even with splitting, falling back to individual checks: ${e.message}`);
+        }
+    } else {
+        console.info(`chain ${chainId} skipping global log fetch, using batched individual checks.`);
     }
+
+    // Batched individual checks
+    const BATCH_SIZE = 50;
+    const freshTokens: any[] = [];
+
+    for (let i = 0; i < tokens.length; i += BATCH_SIZE) {
+        const batch = tokens.slice(i, i + BATCH_SIZE);
+        console.info(`Checking batch ${i} to ${i + batch.length} of ${tokens.length}`);
+
+        await Promise.all(batch.map(async (token) => {
+            const fresh = await isTokenFresh(client, token.address as `0x${string}`, latestBlock, chainId === 8453 ? 10000n : lookBackBlocks);
+            if (fresh) {
+                freshTokens.push(token);
+            }
+        }));
+        await sleep(2000);
+    }
+
+    return freshTokens;
 }
 
 async function generate(chainId: number) {
@@ -197,7 +237,7 @@ async function generate(chainId: number) {
     return combined
 }
 
-async function run(networkId?: string) {
+async function run(networkId?: string, rpcUrlOverride?: string) {
     for (const chainIdStr in TOKEN_LIST) {
         const chainId = parseInt(chainIdStr)
         if (networkId && chainId !== parseInt(networkId)) {
@@ -214,7 +254,7 @@ async function run(networkId?: string) {
         const outputFile = `${buildDir}/${chainId}-tokens.json`
         fs.writeFileSync(outputFile, JSON.stringify(tokens, null, 2))
 
-        const freshTokens = await filterFreshTokens(chainId, tokens)
+        const freshTokens = await filterFreshTokens(chainId, tokens, rpcUrlOverride)
         fs.writeFileSync(`${buildDir}/${chainId}-fresh-tokens.json`, JSON.stringify(freshTokens, null, 2))
 
         console.info(`chain ${chainId}, ${tokens.length} tokens, ${freshTokens.length} are fresh, output ${outputFile}`)
@@ -222,5 +262,26 @@ async function run(networkId?: string) {
     process.exit(0)
 }
 
-const networkId = process.argv[2]
-run(networkId)
+function parseArgs() {
+    const args = process.argv.slice(2);
+    const options: any = {};
+    let networkId = undefined;
+
+    for (let i = 0; i < args.length; i++) {
+        if (args[i].startsWith('--')) {
+            const key = args[i].slice(2);
+            if (i + 1 < args.length && !args[i + 1].startsWith('--')) {
+                options[key] = args[i + 1];
+                i++;
+            } else {
+                options[key] = true;
+            }
+        } else if (!networkId) {
+            networkId = args[i];
+        }
+    }
+    return { networkId, options };
+}
+
+const { networkId, options } = parseArgs();
+run(networkId, options.rpc)
