@@ -91,6 +91,8 @@ async function isTokenFresh(client: any, tokenAddress: `0x${string}`, latestBloc
     }
 }
 
+
+
 // filter for tokens that have had a transfer within recent blocks
 async function filterFreshTokens(chainId: number, tokens: any[], rpcUrlOverride?: string, lookBackBlocks: bigint = 100000n) {
     const chain = CHAINS[chainId];
@@ -105,10 +107,23 @@ async function filterFreshTokens(chainId: number, tokens: any[], rpcUrlOverride?
 
     const client = createPublicClient({
         chain,
-        transport: http(rpcUrl)
+        transport: http(rpcUrl, { batch: true })
     });
 
-    const latestBlock = await client.getBlockNumber();
+    let latestBlock = 0n;
+    for (let i = 0; i < 5; i++) {
+        try {
+            latestBlock = await client.getBlockNumber();
+            break;
+        } catch (e: any) {
+            console.warn(`chain ${chainId} fetch block failed (attempt ${i + 1}), retrying: ${e.message}`);
+            await sleep(2000 * (i + 1));
+        }
+    }
+    if (latestBlock === 0n) {
+        console.error(`chain ${chainId} failed to get block number after retries`);
+        return [];
+    }
     const fromBlock = latestBlock - lookBackBlocks > 0n ? latestBlock - lookBackBlocks : 0n;
 
     console.info(`chain ${chainId} checking fresh tokens from block ${fromBlock} to ${latestBlock}...`);
@@ -153,8 +168,8 @@ async function filterFreshTokens(chainId: number, tokens: any[], rpcUrlOverride?
         console.info(`chain ${chainId} skipping global log fetch, using batched individual checks.`);
     }
 
-    // Batched individual checks
-    const BATCH_SIZE = 50;
+    // Batched individual checks using JSON-RPC batching via viem http transport
+    const BATCH_SIZE = 20;
     const freshTokens: any[] = [];
 
     for (let i = 0; i < tokens.length; i += BATCH_SIZE) {
@@ -167,7 +182,9 @@ async function filterFreshTokens(chainId: number, tokens: any[], rpcUrlOverride?
                 freshTokens.push(token);
             }
         }));
-        await sleep(2000);
+
+        // Gentle pacing
+        await sleep(250);
     }
 
     return freshTokens;
